@@ -1,2 +1,21 @@
-<h1>Albums#index</h1>
-<p>Find me in app/views/albums/index.html.erb</p>
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Albums</h1>
+    <p class="lead">Here we show all albums and it's details</p>
+
+    <div class="row">
+      <% @albums.each do |album| %>
+        <div class="col-md-4">
+          <h5 class="card-title">
+            <%= album['title'] %>
+          </h5>
+
+          <p>User_id: <%= album['user_id'] %> | id: <%= album['id'] %><p>
+          <%= link_to "View Album", album_path(album['id']), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= will_paginate @albums, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: 'margin-auto' %>
+</main>

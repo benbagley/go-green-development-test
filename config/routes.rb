@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'albums/index'
-  get 'albums/show'
+  resources :albums
+  resources :users
 
   root 'albums#index'
 end
