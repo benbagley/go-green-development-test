@@ -16,6 +16,22 @@
         <li>Website: <%= @user['website'] %></li>
         <li>Company: <%= @user['company'] %></li>
       </ul>
+
+      <h5 class="card-title">User Albums</h5>
+
+      <div class="row">
+        <% @albums.each do |album| %>
+          <div class="col-md-4 mb-4">
+            <h5 class="card-title">
+              <%= album['title'] %>
+            </h5>
+
+            <%= link_to "View Album", album_path(album['id']), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= will_paginate @albums, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: 'margin-auto' %>
     </div>
   </div>
 </div>

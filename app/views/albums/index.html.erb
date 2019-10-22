@@ -6,11 +6,12 @@
     <div class="row">
       <% @albums.each do |album| %>
         <div class="col-md-4">
+          <%# image_tag(@albumImage ['thumbnailUrl']) %>
           <h5 class="card-title">
             <%= album['title'] %>
           </h5>
 
-          <p>User_id: <%= album['user_id'] %> | id: <%= album['id'] %><p>
+          <p>UserId: <%= album['userId'] %> | id: <%= album['id'] %><p>
           <%= link_to "View Album", album_path(album['id']), class: "btn btn-primary" %>
         </div>
       <% end %>

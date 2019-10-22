@@ -1,20 +1,46 @@
-<main role="main" class="flex-shrink-0">
+<main role="main">
   <div class="container">
-    <h1 class="mt-5">Albums</h1>
-    <p class="lead">Here we show all photos within a photo album</p>
-
     <div class="row">
-      <% @album.each do |album| %>
-        <div class="col-md-4">
-          <%= image_tag(album['thumbnailUrl']) %>
+      <div class="col">
+        <div class="card mt-5">
+          <div class="card-header">
+            <h5>The creator of this album</h5>
+          </div>
 
-          <h5 class="card-title">
-            <%= album['title'] %>
-          </h5>
+          <div class="card-body">
+            <h5 class="card-title">User details</h5>
+
+            <ul class="card-text">
+              <li>ID: <%= @user['id'] %></li>
+              <li>Name: <%= @user['name'] %></li>
+              <li>E-mail: <%= @user['email'] %></li>
+              <li>Adress: <%= @user['address'] %></li>
+              <li>Phone Number: <%= @user['phone'] %></li>
+              <li>Website: <%= @user['website'] %></li>
+              <li>Company: <%= @user['company'] %></li>
+            </ul>
+          </div>
         </div>
-      <% end %>
+      </div>
+
+      <div class="col">
+        <h2 class="mt-5">Album: <%= @album['title'] %></h2>
+        <p class="lead">All of the photos in this album are below</p>
+
+        <div class="row">
+          <% @albumPhotos.each do |albumPhoto| %>
+            <div class="col-md-4">
+              <%= image_tag(albumPhoto['thumbnailUrl']) %>
+
+              <h5 class="card-title">
+                <%= albumPhoto['title'] %>
+              </h5>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 
-  <%= will_paginate @album, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: 'margin-auto' %>
+  <%= will_paginate @albumPhotos, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: 'margin-auto' %>
 </main>
