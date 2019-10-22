@@ -5,16 +5,18 @@
 
     <div class="row">
       <% @albums.each do |album| %>
-        <div class="col-md-4">
-          <%# image_tag(@albumImage ['thumbnailUrl']) %>
-          <h5 class="card-title">
-            <%= album['title'] %>
-          </h5>
+        <% if album["email"].present? %>
+            <div class="col-md-4">
+              <%# image_tag(@albumImage ['thumbnailUrl']) %>
+              <h5 class="card-title">
+                <%= album['title'] %>
+              </h5>
 
-          <p>By: <%= album.user['name'] %><p>
-          <%= link_to "View Album", album_path(album['id']), class: "btn btn-primary" %>
-        </div>
-      <% end %>
+              <p>By: <%= album.user['userId'] %><p>
+              <%= link_to "View Album", album_path(album['id']), class: "btn btn-primary" %>
+            </div>
+        <% end %>
+    <% end %>
     </div>
   </div>
 
