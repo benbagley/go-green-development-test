@@ -11,7 +11,7 @@
             <%= album['title'] %>
           </h5>
 
-          <p>By: <%= @users.find{|u| u['id'] == album['userId']}.try(:[], 'name') || 'not available' %><p>
+          <p>By: <%= link_to @users.find{|u| u['id'] == album['userId']}.try(:[], 'name') || 'not available', user_path(album['userId']) %><p>
           <%= link_to "View Album", album_path(album['id']), class: "btn btn-primary" %>
         </div>
       <% end %>
