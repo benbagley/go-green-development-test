@@ -6,12 +6,12 @@
     <div class="row">
       <% @albums.each do |album| %>
         <div class="col-md-4">
-          <%= image_tag @albumPhotos.first{|ap| ap['id'] == album['id']}.try(:[],'thumbnailUrl') || 'image not avaliable' %>
+          <%= image_tag @albumPhotos.first{|ap| ap['id'] == album['id']}.try(:[], 'thumbnailUrl') || 'image not avaliable' %>
           <h5 class="card-title">
             <%= album['title'] %>
           </h5>
 
-          <p>By: <%= @users.find{|u| u['id'] == album['userId']}.try(:[],'name') || 'not available' %><p>
+          <p>By: <%= @users.find{|u| u['id'] == album['userId']}.try(:[], 'name') || 'not available' %><p>
           <%= link_to "View Album", album_path(album['id']), class: "btn btn-primary" %>
         </div>
       <% end %>

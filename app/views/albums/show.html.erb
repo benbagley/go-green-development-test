@@ -5,8 +5,6 @@
         <h2 class="mt-5">Album: <%= @album['title'] %></h2>
         <p class="lead">All of the photos in this album are below</p>
 
-        <%# @user.find{|u| u['id'] == @album['userId']}.try(:[],'name') || 'not available' %>
-
         <div class="row">
           <% @albumPhotos.each do |albumPhoto| %>
             <div class="col-md-4">
@@ -23,38 +21,40 @@
       <div class="col">
         <div class="card mt-5 mb-5">
           <div class="card-header">
-            <h5>The creator of this album: <%= @user['name']%></h5>
+            <h5>The creator of this album: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'name') || 'not available' %></h5>
           </div>
 
             <div class="card-body">
               <h5 class="card-title">User details</h5>
 
               <ul class="card-text">
-                <li>ID: <%= @user['id'] %></li>
-                <li>Name: <%= @user['name'] %></li>
-                <li>E-mail: <%= @user['email'] %></li>
+                <li>ID: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'id') || 'not available' %></li>
+                <li>Name: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'name') || 'not available' %></li>
+                <li>E-mail: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'email') || 'not available' %></li>
               </ul>
 
               <ul>
                 <h5>Address</h5>
-                <li>Street: <%= @user['address']['street'] %></li>
-                <li>Suite: <%= @user['address']['suite'] %></li>
-                <li>City: <%= @user['address']['city'] %></li>
-                <li>Zipcode: <%= @user['address']['zipcode'] %></li>
-                <li>Geo Lat: <%= @user['address']['geo']['lat'] %></li>
-                <li>Geo Lng: <%= @user['address']['geo']['lng'] %></li>
+                <li>Address: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address') || 'not available' %></li>
+                <li>Street: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'street') || 'not available' %></li>
+                <li>Suite: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'suite') || 'not available' %></li>
+                <li>City: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'city') || 'not available' %></li>
+                <li>Zipcode: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'zipcode') || 'not available' %></li>
+                <li>Geo Lat: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'geo').try(:[], 'lat') || 'not available' %></li>
+                <li>Geo Lng: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'geo').try(:[], 'lng') || 'not available' %></li>
               </ul>
 
               <ul>
-                <li>Phone Number: <%= @user['phone'] %></li>
-                <li>Website: <%= @user['website'] %></li>
+                <li>Phone Number: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[],'phone') || 'not available' %></li>
+                <li>Website: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[],'website') || 'not available' %></li>
               </ul>
 
               <ul>
                 <h5>Company details</h5>
-                <li>Company name: <%= @user['company']['name'] %></li>
-                <li>Company catchphrase: <%= @user['company']['catchPhrase'] %></li>
-                <li>Company bs: <%= @user['company']['bs'] %></li>
+                <li>Company: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company') || 'not available' %></li>
+                <li>Company name: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company').try(:[], 'name') || 'not available' %></li>
+                <li>Company catchphrase: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company').try(:[], 'catchphrase') || 'not available' %></li>
+                <li>Company bs: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company').try(:[], 'bs') || 'not available' %></li>
               </ul>
           </div>
         </div>
