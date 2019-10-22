@@ -5,6 +5,8 @@ class AlbumsController < ApplicationController
     @albums = HTTParty
       .get('https://jsonplaceholder.typicode.com/albums', :headers => {'Content-Type' => 'application/json'})
       .paginate(:page => params[:page], :per_page => 10)
+    @user = HTTParty
+      .get('https://jsonplaceholder.typicode.com/users', :headers => {'Content-Type' => 'application/json'})
   end
 
   def show

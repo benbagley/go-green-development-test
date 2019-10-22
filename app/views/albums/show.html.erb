@@ -2,28 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <div class="card mt-5">
-          <div class="card-header">
-            <h5>The creator of this album</h5>
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title">User details</h5>
-
-            <ul class="card-text">
-              <li>ID: <%= @user['id'] %></li>
-              <li>Name: <%= @user['name'] %></li>
-              <li>E-mail: <%= @user['email'] %></li>
-              <li>Adress: <%= @user['address'] %></li>
-              <li>Phone Number: <%= @user['phone'] %></li>
-              <li>Website: <%= @user['website'] %></li>
-              <li>Company: <%= @user['company'] %></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
         <h2 class="mt-5">Album: <%= @album['title'] %></h2>
         <p class="lead">All of the photos in this album are below</p>
 
@@ -37,6 +15,46 @@
               </h5>
             </div>
           <% end %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card mt-5 mb-5">
+          <div class="card-header">
+            <h5>The creator of this album: <%= @user['name']%></h5>
+          </div>
+
+            <div class="card-body">
+              <h5 class="card-title">User details</h5>
+
+              <ul class="card-text">
+                <li>ID: <%= @user['id'] %></li>
+                <li>Name: <%= @user['name'] %></li>
+                <li>E-mail: <%= @user['email'] %></li>
+              </ul>
+
+              <ul>
+                <h5>Address</h5>
+                <li>Street: <%= @user['address']['street'] %></li>
+                <li>Suite: <%= @user['address']['suite'] %></li>
+                <li>City: <%= @user['address']['city'] %></li>
+                <li>Zipcode: <%= @user['address']['zipcode'] %></li>
+                <li>Geo Lat: <%= @user['address']['geo']['lat'] %></li>
+                <li>Geo Lng: <%= @user['address']['geo']['lng'] %></li>
+              </ul>
+
+              <ul>
+                <li>Phone Number: <%= @user['phone'] %></li>
+                <li>Website: <%= @user['website'] %></li>
+              </ul>
+
+              <ul>
+                <h5>Company details</h5>
+                <li>Company name: <%= @user['company']['name'] %></li>
+                <li>Company catchphrase: <%= @user['company']['catchPhrase'] %></li>
+                <li>Company bs: <%= @user['company']['bs'] %></li>
+              </ul>
+          </div>
         </div>
       </div>
     </div>
