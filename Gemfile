@@ -58,4 +58,5 @@ gem 'will_paginate-bootstrap4'
 
 group :production do
   gem 'pg'
+  gem 'dalli'
 end

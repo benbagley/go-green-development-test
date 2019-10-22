@@ -1,3 +1,4 @@
+<% cache do %>
 <main role="main">
   <div class="container">
     <div class="row">
@@ -62,3 +63,4 @@
 
   <%= will_paginate @albumPhotos, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: 'margin-auto' %>
 </main>
+<% end %>

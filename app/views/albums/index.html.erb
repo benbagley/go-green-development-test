@@ -3,6 +3,7 @@
     <h1 class="mt-5">Albums</h1>
     <p class="lead">Here we show all albums and it's details</p>
 
+    <% cache do %>
     <div class="row">
       <% @albums.each do |album| %>
         <div class="col-md-4">
@@ -16,6 +17,7 @@
         </div>
       <% end %>
     </div>
+    <% end %>
   </div>
 
   <%= will_paginate @albums, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: 'margin-auto' %>
