@@ -35,7 +35,6 @@
 
               <ul>
                 <h5>Address</h5>
-                <li>Address: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address') || 'not available' %></li>
                 <li>Street: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'street') || 'not available' %></li>
                 <li>Suite: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'suite') || 'not available' %></li>
                 <li>City: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'address').try(:[],'city') || 'not available' %></li>
@@ -51,10 +50,9 @@
 
               <ul>
                 <h5>Company details</h5>
-                <li>Company: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company') || 'not available' %></li>
                 <li>Company name: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company').try(:[], 'name') || 'not available' %></li>
                 <li>Company catchphrase: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company').try(:[], 'catchphrase') || 'not available' %></li>
-                <li>Company bs: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company').try(:[], 'bs') || 'not available' %></li>
+                <li>Company bs: <%= @users.find{|u| u['id'] == @album['userId']}.try(:[], 'company').try(:[], 'name') || 'not available' %></li>
               </ul>
           </div>
         </div>
